@@ -7,17 +7,19 @@ This project is a **Proof of Concept (POC)** demonstrating the integration of **
 ---
 
 ## 📂 Project Structure
+```bash
+.
+├── Chinook.db              # SQLite sample database
+├── Chinook_schema.txt      # Schema definition of the database
+├── agent.py                # Defines agent configuration
+├── chinhook.py             # Database utility functions
+├── core/                   # Supporting modules (if any)
+├── main.py                 # Main application entry point
+├── prompt.py               # Prompt templates for the agent
+├── sql_agent.py            # SQL agent logic implementation
+└── utils.py                # Helper utilities
 
-  ├── Chinook.db # SQLite sample database 
-  ├── Chinook_schema.txt # Schema definition of the database 
-  ├── agent.py # Defines agent configuration 
-  ├── chinhook.py # Database utility functions 
-  ├── core/ # Supporting modules (if any) 
-  ├── main.py # Main application entry point 
-  ├── prompt.py # Prompt templates for the agent 
-  ├── sql_agent.py # SQL agent logic implementation 
-  └── utils.py # Helper utilities
-
+```
 
 ---
 

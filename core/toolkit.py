@@ -1,14 +1,20 @@
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain_community.utilities import SQLDatabase
 from core.llm_config import llm_model_config
+from sql_agent import get_db
 
 from langchain_core.tools import tool
 
 # define db
-db = SQLDatabase.from_uri("sqlite:///Chinook.db")
+# db = SQLDatabase.from_uri("sqlite:///Chinook.db")
+db = SQLDatabase.from_uri("mssql+pyodbc://spanish_login:Query$1234@sqlserver-spanishchatbot-dev.database.windows.net:1433/CompanyTestDB?driver=ODBC+Driver+18+for+SQL+Server")
+# db = SQLDatabase.from_uri("mssql+pyodbc://spanish_login:Query$1234@sqlserver-spanishchatbot-dev.database.windows.net:1433/BusinessRegistrationDB_EN_ES?driver=ODBC+Driver+18+for+SQL+Server")
+# db = get_db()
 
 toolkit = SQLDatabaseToolkit(db=db, llm=llm_model_config())
 tools = toolkit.get_tools()
+
+# print("tools : ", tools)
 
 def get_list_tables_tool():
     return next(tool for tool in tools if tool.name == "sql_db_list_tables")

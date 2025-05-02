@@ -10,3 +10,6 @@ def llm_model_config():
         api_key=os.getenv("OPENAI_API_KEY"),
         temperature=0,
     )
+    
+def db_str_config():
+    return os.getenv("SQL_DB_URI")

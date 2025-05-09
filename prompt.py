@@ -1,7 +1,8 @@
 from langchain_core.prompts import ChatPromptTemplate
 from core.llm_config import llm_model_config
+from core.toolkit import db_query_tool
 # from core.toolkit import db_query_tool
-from sql_schema import db_query_tool
+# from sql_schema import db_query_tool
 
 query_pal_schema = """
 CREATE DATABASE BusinessRegistrationDB_EN_ES

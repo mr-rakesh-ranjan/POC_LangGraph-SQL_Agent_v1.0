@@ -1,7 +1,8 @@
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 from langchain_community.utilities import SQLDatabase
+from langsmith import traceable
 from core.llm_config import llm_model_config
-from sql_agent import get_db
+# from sql_agent import get_db
 
 from langchain_core.tools import tool
 
@@ -16,9 +17,11 @@ tools = toolkit.get_tools()
 
 # print("tools : ", tools)
 
+@traceable(run_type="tool", name="get list_tables_tool")
 def get_list_tables_tool():
     return next(tool for tool in tools if tool.name == "sql_db_list_tables")
 
+@traceable(run_type="tool", name="get schema_tool")
 def get_schema_tool():
     return next(tool for tool in tools if tool.name == "sql_db_schema")
 
@@ -29,6 +32,7 @@ def get_schema_tool():
 # print(get_schema_tool.invoke("Artist"))
 
 @tool
+@traceable(run_type="tool", name="db_query_tool")
 def db_query_tool(query: str) -> str:
     """
     Execute a SQL query against the database and get back the result.

@@ -3,13 +3,18 @@
 from core.workflow import app
 print(app.get_graph())
 
-while True:
-    user_query = input("Enter your query: ")
-    if user_query.lower() == "exit":
-        break
-    messages = app.invoke({"messages": [("user", user_query)]})
-    json_str = messages["messages"][-1].tool_calls[0]["args"]["final_answer"]
-    print(json_str)
+if __name__ == "__main__":
+    
+    from core.llm_config import setup_smith_variables
+    setup_smith_variables()
+    
+    while True:
+        user_query = input("Enter your query: ")
+        if user_query.lower() == "exit":
+            break
+        messages = app.invoke({"messages": [("user", user_query)]})
+        json_str = messages["messages"][-1].tool_calls[0]["args"]["final_answer"]
+        print(json_str)
     
     
 # messages = app.invoke({"messages": [("user", "Which artist main genre is Rock?")]})
